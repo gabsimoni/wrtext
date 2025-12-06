@@ -1,0 +1,5 @@
+cat beratest.txt
+ls
+ls
+rw
+pwr
