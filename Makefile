@@ -3,12 +3,13 @@ CFLAGS = `pkg-config --cflags gtk4`
 LIBS = `pkg-config --libs gtk4`
 
 SRC = ./src
-EXE = WRText-v0.1
+VER = 0.1
+EXE = WRText-v$(VER)
 
 all: # Compiles the release version of the application
-	gcc $(CFLAGS) -o $(EXE) src/*.c $(LIBS) -DVER=\"$(EXE)\"
+	gcc $(CFLAGS) -o $(EXE) src/*.c $(LIBS) -DVER=\"$(VER)\"
 debug: # Compiles the debug version of the application
-	gcc $(CFLAGS) -o $(EXE) src/*.c $(LIBS) -DVER=\"$(EXE)\" -DDEBUG -g -Wall
+	gcc $(CFLAGS) -o $(EXE) src/*.c $(LIBS) -DVER=\"$(VER)\" -DDEBUG -g -Wall
 test:
 	gcc $(CFLAGS) -o $(EXE) test.c $(LIBS) -DDEBUG -g -Wall
 

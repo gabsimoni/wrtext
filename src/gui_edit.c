@@ -54,7 +54,7 @@ gui_edit_init(GtkApplication *app)
 	// Initialize window and box
 	GtkWidget *window;
 	window = gtk_application_window_new(app);
-	gtk_window_set_title(GTK_WINDOW(window), VER);
+	gtk_window_set_title(GTK_WINDOW(window), "WRText");
 	gtk_window_set_default_size(GTK_WINDOW(window), 400, 400);
 	gtk_application_window_set_show_menubar(GTK_APPLICATION_WINDOW(window), TRUE);
 
@@ -94,7 +94,7 @@ gui_edit_close_file(editor_file_id id)
 		log_err(__FILE__, "ID %lu not found in file list", id);
 		return -1;
 	}
-	log_err(__FILE__, "ID %lu is at position %d", id, file_index);
+	log_info(__FILE__, "ID %lu is at position %d", id, file_index);
 
 	// Removes the page associated to that file
 	gtk_notebook_remove_page(
@@ -169,8 +169,15 @@ gui_edit_add_file(editor_file *f)
 
 	// Create new notebook page
 
+	// Load file contents into a text area
+	GtkTextBuffer *buff = gtk_text_buffer_new(NULL);
+	gtk_text_buffer_set_text(buff, f->contents, f->size);
+
 	// Create text area with file contents
 	GtkWidget *text_area = gtk_text_view_new();
+
+	// Loads text buffer into textarea
+	gtk_text_view_set_buffer(GTK_TEXT_VIEW(text_area), buff);
 
 	// Create widgets of the page title
 	GtkWidget *title_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 2);
