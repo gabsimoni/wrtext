@@ -17,4 +17,6 @@ editor_file_delete(editor_file *f)
 	free(f->contents);
 
 	free(f);
+
+	return 0;
 }

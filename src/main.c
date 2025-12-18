@@ -25,7 +25,7 @@ main(int argc, char **argv)
 	int status;			 // Variable used to save the result of the application
 
 	// Creates the GTK application and puts it in the pointer
-	app = gtk_application_new("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
+	app = gtk_application_new("org.gtk.wrtext", G_APPLICATION_DEFAULT_FLAGS);
 
 	// GTK uses signal, here we make it so that once the "activate" signal is called, the
 	// activatejgfhgfhgfh function is called.

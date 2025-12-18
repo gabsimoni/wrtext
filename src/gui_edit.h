@@ -36,4 +36,4 @@ void gui_edit_cleanup();
 /*!
 	@brief Just a debug function to add a file with random contets
 */
-void gui_edit_add_random_file();
+void gui_edit_add_random_file(GSimpleAction *action, GVariant *parameter, gpointer user_data);

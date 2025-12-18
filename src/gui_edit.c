@@ -54,29 +54,26 @@ gui_edit_init(GtkApplication *app)
 	// Initialize window and box
 	GtkWidget *window;
 	window = gtk_application_window_new(app);
-	gtk_window_set_title(GTK_WINDOW(window), VER);
+	gtk_window_set_title(GTK_WINDOW(window), "WRText");
 	gtk_window_set_default_size(GTK_WINDOW(window), 400, 400);
+	gtk_application_window_set_show_menubar(GTK_APPLICATION_WINDOW(window), TRUE);
 
 	g_signal_connect(window, "destroy", G_CALLBACK(gui_edit_cleanup), NULL);
 
-	GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
-	gtk_container_add(GTK_CONTAINER(window), vbox);
-
 	// Initialize menubar
-	GtkWidget *menubar = gui_edit_menu_init(app);
+	gui_edit_menu_init(app);
 
-	gtk_box_pack_start(GTK_BOX(vbox), menubar, FALSE, FALSE, 0);
+	GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 0);
+	gtk_window_set_child(GTK_WINDOW(window), vbox);
 
 	notebook = gtk_notebook_new();
 
 	// Create a group, needed for reordering
 	gtk_notebook_set_group_name(GTK_NOTEBOOK(notebook), "notebookgroup");
 
-	gtk_box_pack_start(GTK_BOX(vbox), notebook, TRUE, TRUE, 0);
+	gtk_box_append(GTK_BOX(vbox), notebook);
 
-	// Shows window
-	gtk_widget_show_all(window);
-
+	gtk_window_present(GTK_WINDOW(window));
 	return window;
 }
 
@@ -97,7 +94,7 @@ gui_edit_close_file(editor_file_id id)
 		log_err(__FILE__, "ID %lu not found in file list", id);
 		return -1;
 	}
-	log_err(__FILE__, "ID %lu is at position %d", id, file_index);
+	log_info(__FILE__, "ID %lu is at position %d", id, file_index);
 
 	// Removes the page associated to that file
 	gtk_notebook_remove_page(
@@ -172,17 +169,27 @@ gui_edit_add_file(editor_file *f)
 
 	// Create new notebook page
 
+	// Load file contents into a text area
+	GtkTextBuffer *buff = gtk_text_buffer_new(NULL);
+	gtk_text_buffer_set_text(buff, f->contents, f->size);
+
 	// Create text area with file contents
 	GtkWidget *text_area = gtk_text_view_new();
+
+	// Loads text buffer into textarea
+	gtk_text_view_set_buffer(GTK_TEXT_VIEW(text_area), buff);
 
 	// Create widgets of the page title
 	GtkWidget *title_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 2);
 	GtkWidget *title_name = gtk_label_new(f->file_name);
-	GtkWidget *title_close = gtk_button_new_from_icon_name("window-close", GTK_ICON_SIZE_MENU);
+	GtkWidget *close_image = gtk_image_new_from_icon_name("window-close");
+
+	GtkWidget *title_close = gtk_button_new();
+	gtk_button_set_child(GTK_BUTTON(title_close), close_image);
 
 	// Put them all in one box
-	gtk_box_pack_start(GTK_BOX(title_box), title_name, FALSE, FALSE, 0);
-	gtk_box_pack_start(GTK_BOX(title_box), title_close, FALSE, FALSE, 0);
+	gtk_box_append(GTK_BOX(title_box), title_name);
+	gtk_box_append(GTK_BOX(title_box), title_close);
 
 	// Create page with the widgets
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), text_area, title_box);
@@ -225,7 +232,7 @@ gui_edit_cleanup()
 }
 
 void
-gui_edit_add_random_file()
+gui_edit_add_random_file(GSimpleAction *action, GVariant *parameter, gpointer user_data)
 {
 	static int called = 0;
 	// TEST

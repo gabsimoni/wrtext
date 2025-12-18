@@ -1,5 +1,6 @@
 #include "gui_edit_menu.h"
 #include "editor_file.h"
+#include "gui_about.h"
 #include "gui_edit.h"
 #include <gtk/gtk.h>
 #include <stdlib.h>
@@ -9,17 +10,39 @@ GtkWidget *
 gui_edit_menu_init(GtkApplication *app)
 {
 
-	GtkWidget *menubar = gtk_menu_bar_new();
+	// Create action
+	GSimpleAction *action_randfile = g_simple_action_new("randfile", NULL);
+	GSimpleAction *action_about = g_simple_action_new("about", NULL);
+	// Link action to function
+	g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action_randfile));
+	g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action_about));
+	g_signal_connect(action_randfile, "activate", G_CALLBACK(gui_edit_add_random_file), NULL);
+	// Calls the function that activates the about window and passes it the main window
+	g_signal_connect(action_about, "activate", G_CALLBACK(gui_about_init),
+					 gtk_application_get_active_window(app));
+	// Create the two menus
+	GMenu *menu_model = g_menu_new();
+	GMenu *menu_file_model = g_menu_new();
+	GMenu *menu_help_model = g_menu_new();
 
-	GtkWidget *file_menu = gtk_menu_new();
-	GtkWidget *file_item = gtk_menu_item_new_with_label("File");
-	gtk_menu_item_set_submenu(GTK_MENU_ITEM(file_item), file_menu);
+	GMenuItem *menu_help_menu = g_menu_item_new("Help", NULL);
+	GMenuItem *menu_file_menu = g_menu_item_new("File", NULL);
+	GMenuItem *item_filerand
+		= g_menu_item_new("FileRand", "app.randfile"); // Link option to action
+	GMenuItem *item_about = g_menu_item_new("About", "app.about");
 
-	GtkWidget *random_item = gtk_menu_item_new_with_label("Add random file");
-	g_signal_connect(random_item, "activate", G_CALLBACK(gui_edit_add_random_file), app);
-	gtk_menu_shell_append(GTK_MENU_SHELL(file_menu), random_item);
+	// Add File submenu and randfile item
+	g_menu_append_item(menu_file_model, item_filerand);
+	g_menu_item_set_submenu(menu_file_menu, G_MENU_MODEL(menu_file_model));
+	g_menu_append_item(menu_model, menu_file_menu);
 
-	gtk_menu_shell_append(GTK_MENU_SHELL(menubar), file_item);
+	// Add Help submenu and About item
+	g_menu_append_item(menu_help_model, item_about);
+	g_menu_item_set_submenu(menu_help_menu, G_MENU_MODEL(menu_help_model));
+	g_menu_append_item(menu_model, menu_help_menu);
 
-	return menubar;
+	// Set menubar
+	gtk_application_set_menubar(GTK_APPLICATION(app), G_MENU_MODEL(menu_model));
+
+	return NULL;
 }
