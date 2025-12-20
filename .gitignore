@@ -1,4 +1,4 @@
 compile_commands.json
 WRText-v0.1
 vg.log
-.cache
+.cache.DS_Store

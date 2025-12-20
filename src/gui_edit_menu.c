@@ -1,48 +1,59 @@
 #include "gui_edit_menu.h"
-#include "editor_file.h"
 #include "gui_about.h"
 #include "gui_edit.h"
+#include "gui_settings.h"
 #include <gtk/gtk.h>
-#include <stdlib.h>
-#include <string.h>
+
+static void
+on_settings_clicked(GtkButton *button, gpointer user_data)
+{
+    (void)button;
+    GtkWindow *parent = GTK_WINDOW(user_data);
+    gui_settings_open(parent);
+}
+
+static void
+on_randfile_clicked(GtkButton *button, gpointer user_data)
+{
+    (void)button;
+    (void)user_data;
+    /* Reuse your existing test function */
+    gui_edit_add_random_file(NULL, NULL, NULL);
+}
 
 GtkWidget *
-gui_edit_menu_init(GtkApplication *app)
+gui_edit_menu_init(GtkApplication *app, GtkWindow *parent_window)
 {
+    (void)app;
 
-	// Create action
-	GSimpleAction *action_randfile = g_simple_action_new("randfile", NULL);
-	GSimpleAction *action_about = g_simple_action_new("about", NULL);
-	// Link action to function
-	g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action_randfile));
-	g_action_map_add_action(G_ACTION_MAP(app), G_ACTION(action_about));
-	g_signal_connect(action_randfile, "activate", G_CALLBACK(gui_edit_add_random_file), NULL);
-	// Calls the function that activates the about window and passes it the main window
-	g_signal_connect(action_about, "activate", G_CALLBACK(gui_about_init),
-					 gtk_application_get_active_window(app));
-	// Create the two menus
-	GMenu *menu_model = g_menu_new();
-	GMenu *menu_file_model = g_menu_new();
-	GMenu *menu_help_model = g_menu_new();
+    /*
+     * This is an in-window top bar.
+     * It avoids gtk_application_set_menubar(), so the user sees buttons inside the app.
+     */
+    GtkWidget *bar = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 8);
+    gtk_widget_set_margin_top(bar, 6);
+    gtk_widget_set_margin_bottom(bar, 6);
+    gtk_widget_set_margin_start(bar, 10);
+    gtk_widget_set_margin_end(bar, 10);
 
-	GMenuItem *menu_help_menu = g_menu_item_new("Help", NULL);
-	GMenuItem *menu_file_menu = g_menu_item_new("File", NULL);
-	GMenuItem *item_filerand
-		= g_menu_item_new("FileRand", "app.randfile"); // Link option to action
-	GMenuItem *item_about = g_menu_item_new("About", "app.about");
+    /* Left hamburger button (visual only for now) */
+    GtkWidget *btn_menu = gtk_button_new_from_icon_name("open-menu-symbolic");
+    gtk_widget_set_tooltip_text(btn_menu, "Menu");
+    gtk_box_append(GTK_BOX(bar), btn_menu);
 
-	// Add File submenu and randfile item
-	g_menu_append_item(menu_file_model, item_filerand);
-	g_menu_item_set_submenu(menu_file_menu, G_MENU_MODEL(menu_file_model));
-	g_menu_append_item(menu_model, menu_file_menu);
+    /* Spacer so buttons look like a small bar */
+    GtkWidget *spacer = gtk_label_new(NULL);
+    gtk_widget_set_hexpand(spacer, TRUE);
+    gtk_box_append(GTK_BOX(bar), spacer);
 
-	// Add Help submenu and About item
-	g_menu_append_item(menu_help_model, item_about);
-	g_menu_item_set_submenu(menu_help_menu, G_MENU_MODEL(menu_help_model));
-	g_menu_append_item(menu_model, menu_help_menu);
+    /* Buttons that MUST appear inside the window (your requirement) */
+    GtkWidget *btn_rand = gtk_button_new_with_label("FileRand");
+    g_signal_connect(btn_rand, "clicked", G_CALLBACK(on_randfile_clicked), NULL);
+    gtk_box_append(GTK_BOX(bar), btn_rand);
 
-	// Set menubar
-	gtk_application_set_menubar(GTK_APPLICATION(app), G_MENU_MODEL(menu_model));
+    GtkWidget *btn_settings = gtk_button_new_with_label("Settings");
+    g_signal_connect(btn_settings, "clicked", G_CALLBACK(on_settings_clicked), parent_window);
+    gtk_box_append(GTK_BOX(bar), btn_settings);
 
-	return NULL;
+    return bar;
 }

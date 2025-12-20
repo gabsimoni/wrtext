@@ -1,15 +1,19 @@
-#include "editor_file.h"
+#ifndef GUI_EDIT_MENU_H
+#define GUI_EDIT_MENU_H
+
 #include <gtk/gtk.h>
 
 /*!
-	@file gui_edit_menu.h
-	@brief The files gui_edit_menu.h and gui_edit_menu.c contains the code related to the menubar in the edit window
-*/
-
+ * @file gui_edit_menu.h
+ * @brief Top bar inside the WRText window (NOT macOS global menubar).
+ */
 
 /*!
-	@brief Initializes the menu bar of the edit window
-	@param app Pointer to the GTK application
-*/
-GtkWidget *gui_edit_menu_init(GtkApplication *app);
+ * @brief Creates a top bar widget (hamburger + buttons) and returns it.
+ * @param app GTK application
+ * @param parent_window The WRText main window (needed to open Settings)
+ * @return Widget to be packed at the top of the main window layout
+ */
+GtkWidget *gui_edit_menu_init(GtkApplication *app, GtkWindow *parent_window);
 
+#endif
