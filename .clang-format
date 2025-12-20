@@ -1,0 +1,13 @@
+BasedOnStyle: GNU
+TabWidth: 4
+UseTab: Always
+IndentWidth: 4
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: true
+  AfterControlStatement: false
+
+SpaceBeforeParens: Never
+
+ColumnLimit: 99

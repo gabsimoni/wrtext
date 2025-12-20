@@ -1,0 +1,140 @@
+\hypertarget{gui__edit_8c}{}\doxysection{src/gui\+\_\+edit.c File Reference}
+\label{gui__edit_8c}\index{src/gui\_edit.c@{src/gui\_edit.c}}
+{\ttfamily \#include \char`\"{}gui\+\_\+edit.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}editor\+\_\+file.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gui\+\_\+edit\+\_\+menu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}logger.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$gtk/gtk.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structeditor__file__list}{editor\+\_\+file\+\_\+list}}
+\begin{DoxyCompactList}\small\item\em Structure defining a list of files and mapping each one to a page number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gui__edit_8c_a5c83847e40c7733b59d9a2a9311313fe}{log\+\_\+file\+\_\+list}} ()
+\item 
+Gtk\+Widget $\ast$ \mbox{\hyperlink{gui__edit_8c_a4d0abf0528052793453826e63826a71c}{gui\+\_\+edit\+\_\+init}} (Gtk\+Application $\ast$app)
+\begin{DoxyCompactList}\small\item\em Initializes the main application window responsible for allowing the user to edit the code. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{gui__edit_8c_a9c456445bb8064bd5c0d142c34af1a3c}{gui\+\_\+edit\+\_\+close\+\_\+file}} (\mbox{\hyperlink{editor__file_8h_a9ed9dddb2d11bfa3cbcb15f0094d1431}{editor\+\_\+file\+\_\+id}} id)
+\begin{DoxyCompactList}\small\item\em Function that closes an opened file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gui__edit_8c_a09ce2fa8638ea98ff441fc3dffe822cc}{on\+\_\+click\+\_\+file\+\_\+close}} (Gtk\+Button $\ast$button, gpointer data)
+\item 
+\mbox{\hyperlink{editor__file_8h_a9ed9dddb2d11bfa3cbcb15f0094d1431}{editor\+\_\+file\+\_\+id}} \mbox{\hyperlink{gui__edit_8c_a9526d247352bb14be4f467ee4953c131}{gui\+\_\+edit\+\_\+add\+\_\+file}} (\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Adds a file to the list of opened file so that the user may edit it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gui__edit_8c_a6071253091095e91b5b17493c3609325}{gui\+\_\+edit\+\_\+cleanup}} ()
+\item 
+void \mbox{\hyperlink{gui__edit_8c_a64b60556138ebb762eea86cab29ba848}{gui\+\_\+edit\+\_\+add\+\_\+random\+\_\+file}} ()
+\begin{DoxyCompactList}\small\item\em Just a debug function to add a file with random contets. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structeditor__file__list}{editor\+\_\+file\+\_\+list}} \mbox{\hyperlink{gui__edit_8c_a8fb46b499d6527b88e5e74dec08bc818}{file\+\_\+list}}
+\begin{DoxyCompactList}\small\item\em Container of all the files currently opened in the editor. \end{DoxyCompactList}\item 
+Gtk\+Widget $\ast$ \mbox{\hyperlink{gui__edit_8c_a87d39878337d0b71ac7531220075a491}{notebook}}
+\begin{DoxyCompactList}\small\item\em GTK widget that holds all of the opened files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gui__edit_8c_a9526d247352bb14be4f467ee4953c131}\label{gui__edit_8c_a9526d247352bb14be4f467ee4953c131}} 
+\index{gui\_edit.c@{gui\_edit.c}!gui\_edit\_add\_file@{gui\_edit\_add\_file}}
+\index{gui\_edit\_add\_file@{gui\_edit\_add\_file}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{gui\_edit\_add\_file()}{gui\_edit\_add\_file()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{editor__file_8h_a9ed9dddb2d11bfa3cbcb15f0094d1431}{editor\+\_\+file\+\_\+id}} gui\+\_\+edit\+\_\+add\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Adds a file to the list of opened file so that the user may edit it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Pointer to the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the ID of the file added, -\/1 in case of error 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gui__edit_8c_a64b60556138ebb762eea86cab29ba848}\label{gui__edit_8c_a64b60556138ebb762eea86cab29ba848}} 
+\index{gui\_edit.c@{gui\_edit.c}!gui\_edit\_add\_random\_file@{gui\_edit\_add\_random\_file}}
+\index{gui\_edit\_add\_random\_file@{gui\_edit\_add\_random\_file}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{gui\_edit\_add\_random\_file()}{gui\_edit\_add\_random\_file()}}
+{\footnotesize\ttfamily void gui\+\_\+edit\+\_\+add\+\_\+random\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Just a debug function to add a file with random contets. 
+
+\mbox{\Hypertarget{gui__edit_8c_a6071253091095e91b5b17493c3609325}\label{gui__edit_8c_a6071253091095e91b5b17493c3609325}} 
+\index{gui\_edit.c@{gui\_edit.c}!gui\_edit\_cleanup@{gui\_edit\_cleanup}}
+\index{gui\_edit\_cleanup@{gui\_edit\_cleanup}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{gui\_edit\_cleanup()}{gui\_edit\_cleanup()}}
+{\footnotesize\ttfamily void gui\+\_\+edit\+\_\+cleanup (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gui__edit_8c_a9c456445bb8064bd5c0d142c34af1a3c}\label{gui__edit_8c_a9c456445bb8064bd5c0d142c34af1a3c}} 
+\index{gui\_edit.c@{gui\_edit.c}!gui\_edit\_close\_file@{gui\_edit\_close\_file}}
+\index{gui\_edit\_close\_file@{gui\_edit\_close\_file}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{gui\_edit\_close\_file()}{gui\_edit\_close\_file()}}
+{\footnotesize\ttfamily int gui\+\_\+edit\+\_\+close\+\_\+file (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{editor__file_8h_a9ed9dddb2d11bfa3cbcb15f0094d1431}{editor\+\_\+file\+\_\+id}}}]{id }\end{DoxyParamCaption})}
+
+
+
+Function that closes an opened file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & ID of the file to be closed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{gui__edit_8c_a4d0abf0528052793453826e63826a71c}\label{gui__edit_8c_a4d0abf0528052793453826e63826a71c}} 
+\index{gui\_edit.c@{gui\_edit.c}!gui\_edit\_init@{gui\_edit\_init}}
+\index{gui\_edit\_init@{gui\_edit\_init}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{gui\_edit\_init()}{gui\_edit\_init()}}
+{\footnotesize\ttfamily Gtk\+Widget $\ast$ gui\+\_\+edit\+\_\+init (\begin{DoxyParamCaption}\item[{Gtk\+Application $\ast$}]{app }\end{DoxyParamCaption})}
+
+
+
+Initializes the main application window responsible for allowing the user to edit the code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em app} & Pointer to the GTK application \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{gui__edit_8c_a5c83847e40c7733b59d9a2a9311313fe}\label{gui__edit_8c_a5c83847e40c7733b59d9a2a9311313fe}} 
+\index{gui\_edit.c@{gui\_edit.c}!log\_file\_list@{log\_file\_list}}
+\index{log\_file\_list@{log\_file\_list}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{log\_file\_list()}{log\_file\_list()}}
+{\footnotesize\ttfamily void log\+\_\+file\+\_\+list (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gui__edit_8c_a09ce2fa8638ea98ff441fc3dffe822cc}\label{gui__edit_8c_a09ce2fa8638ea98ff441fc3dffe822cc}} 
+\index{gui\_edit.c@{gui\_edit.c}!on\_click\_file\_close@{on\_click\_file\_close}}
+\index{on\_click\_file\_close@{on\_click\_file\_close}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{on\_click\_file\_close()}{on\_click\_file\_close()}}
+{\footnotesize\ttfamily void on\+\_\+click\+\_\+file\+\_\+close (\begin{DoxyParamCaption}\item[{Gtk\+Button $\ast$}]{button,  }\item[{gpointer}]{data }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{gui__edit_8c_a8fb46b499d6527b88e5e74dec08bc818}\label{gui__edit_8c_a8fb46b499d6527b88e5e74dec08bc818}} 
+\index{gui\_edit.c@{gui\_edit.c}!file\_list@{file\_list}}
+\index{file\_list@{file\_list}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{file\_list}{file\_list}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structeditor__file__list}{editor\+\_\+file\+\_\+list}} file\+\_\+list}
+
+
+
+Container of all the files currently opened in the editor. 
+
+\mbox{\Hypertarget{gui__edit_8c_a87d39878337d0b71ac7531220075a491}\label{gui__edit_8c_a87d39878337d0b71ac7531220075a491}} 
+\index{gui\_edit.c@{gui\_edit.c}!notebook@{notebook}}
+\index{notebook@{notebook}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{notebook}{notebook}}
+{\footnotesize\ttfamily Gtk\+Widget$\ast$ notebook}
+
+
+
+GTK widget that holds all of the opened files. 
+

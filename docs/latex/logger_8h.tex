@@ -1,0 +1,35 @@
+\hypertarget{logger_8h}{}\doxysection{src/logger.h File Reference}
+\label{logger_8h}\index{src/logger.h@{src/logger.h}}
+
+
+\mbox{\hyperlink{logger_8h}{logger.\+h}} and \mbox{\hyperlink{logger_8c}{logger.\+c}} contain the code for logging messages on the console. These can include errors or just debug information. When the application is compiled in release mode these messages will not be printed  
+
+
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{logger_8h_abb332b62262d43de1099a83372727f21}{log\+\_\+info}} (const char $\ast$filename, const char $\ast$format,...)
+\item 
+void \mbox{\hyperlink{logger_8h_a46e9395a6fb9e7929a589053c4a6436f}{log\+\_\+err}} (const char $\ast$filename, const char $\ast$format,...)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{logger_8h}{logger.\+h}} and \mbox{\hyperlink{logger_8c}{logger.\+c}} contain the code for logging messages on the console. These can include errors or just debug information. When the application is compiled in release mode these messages will not be printed 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{logger_8h_a46e9395a6fb9e7929a589053c4a6436f}\label{logger_8h_a46e9395a6fb9e7929a589053c4a6436f}} 
+\index{logger.h@{logger.h}!log\_err@{log\_err}}
+\index{log\_err@{log\_err}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{log\_err()}{log\_err()}}
+{\footnotesize\ttfamily void log\+\_\+err (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{logger_8h_abb332b62262d43de1099a83372727f21}\label{logger_8h_abb332b62262d43de1099a83372727f21}} 
+\index{logger.h@{logger.h}!log\_info@{log\_info}}
+\index{log\_info@{log\_info}!logger.h@{logger.h}}
+\doxysubsubsection{\texorpdfstring{log\_info()}{log\_info()}}
+{\footnotesize\ttfamily void log\+\_\+info (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{const char $\ast$}]{format,  }\item[{}]{... }\end{DoxyParamCaption})}
+

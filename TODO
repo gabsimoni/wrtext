@@ -1,0 +1,2 @@
+- Have the program take paths as arguments and automatically open those files
+- Add error handling for gui_edit.c and gui_edit_menu.c
