@@ -1,4 +1,7 @@
 #include "gui_settings.h"
+
+#include <gtk/gtk.h>
+#include <pango/pango.h>
 #include <string.h>
 
 /*
@@ -23,7 +26,7 @@ typedef struct {
     GtkCheckButton *cb_dark;
     GtkLabel *lbl_font_used;
     GtkFontDialogButton *btn_font;
-    char *draft_font; // temporary selection before Apply
+    char *draft_font; /* temporary selection before Apply */
 } UiRefs;
 
 static void
@@ -74,14 +77,10 @@ on_apply_clicked(GtkButton *button, gpointer user_data)
         g_state.font_desc = g_strdup(ui->draft_font);
     }
 
-    /* You can later call functions that actually update the editor UI here:
-     * - toggle wrap mode on GtkTextView
-     * - show whitespace rendering
-     * - line numbers (needs extra widget / sourceview etc.)
-     * - dark mode (CSS provider)
-     */
-
-    gtk_window_close(g_settings_window);
+    /* Close settings window */
+    if (g_settings_window) {
+        gtk_window_close(g_settings_window);
+    }
 }
 
 static void
@@ -90,7 +89,7 @@ on_font_changed(GObject *obj, GParamSpec *pspec, gpointer user_data)
     (void)pspec;
     UiRefs *ui = (UiRefs *)user_data;
 
-    /* GtkFontDialogButton exposes the selected font description as a property "font-desc" (PangoFontDescription*) */
+    /* GtkFontDialogButton property "font-desc" is a PangoFontDescription* (boxed type) */
     PangoFontDescription *desc = NULL;
     g_object_get(obj, "font-desc", &desc, NULL);
 
@@ -119,7 +118,10 @@ section_title(const char *text)
 static GtkWidget *
 build_settings_content(GtkWindow *parent)
 {
+    (void)parent;
+
     UiRefs *ui = g_new0(UiRefs, 1);
+    /* Attach UiRefs to window; will be freed when window is finalized */
     g_object_set_data_full(G_OBJECT(g_settings_window), "ui-refs", ui, ui_refs_free);
 
     /* Outer container */
@@ -162,7 +164,9 @@ build_settings_content(GtkWindow *parent)
     /* Modern GTK4 font picker */
     GtkFontDialog *dialog = gtk_font_dialog_new();
     ui->btn_font = GTK_FONT_DIALOG_BUTTON(gtk_font_dialog_button_new(dialog));
-    gtk_font_dialog_button_set_title(ui->btn_font, "Pick font");
+
+    /* Use property instead of gtk_font_dialog_button_set_title (compat-safe) */
+    g_object_set(G_OBJECT(ui->btn_font), "title", "Pick font", NULL);
 
     /* Preload current font if any */
     if (g_state.font_desc && g_state.font_desc[0] != '\0') {
@@ -201,8 +205,19 @@ build_settings_content(GtkWindow *parent)
     gtk_box_append(GTK_BOX(bottom), btn_apply);
     gtk_box_append(GTK_BOX(outer), bottom);
 
-    (void)parent;
     return outer;
+}
+
+/* C callback instead of C++ lambda */
+static gboolean
+on_settings_close_request(GtkWindow *win, gpointer user_data)
+{
+    (void)win;
+    (void)user_data;
+
+    /* Allow window to close; reset pointer so it can be opened again */
+    g_settings_window = NULL;
+    return FALSE;
 }
 
 void
@@ -215,19 +230,16 @@ gui_settings_open(GtkWindow *parent)
 
     g_settings_window = GTK_WINDOW(gtk_window_new());
     gtk_window_set_title(g_settings_window, "Settings");
-    gtk_window_set_default_size(g_settings_window, 340, 420);
+    gtk_window_set_default_size(g_settings_window, 310, 360);
     gtk_window_set_transient_for(g_settings_window, parent);
     gtk_window_set_modal(g_settings_window, TRUE);
 
     GtkWidget *content = build_settings_content(parent);
     gtk_window_set_child(g_settings_window, content);
 
-    /* When user closes the window, we must reset pointer so it can be opened again */
-    g_signal_connect(g_settings_window, "close-request", G_CALLBACK(+[] (GtkWindow *win, gpointer) -> gboolean {
-        (void)win;
-        g_settings_window = NULL;
-        return FALSE; /* allow close */
-    }), NULL);
+    /* When user closes the window, reset pointer so it can be opened again */
+    g_signal_connect(g_settings_window, "close-request",
+                     G_CALLBACK(on_settings_close_request), NULL);
 
     gtk_window_present(g_settings_window);
 }
