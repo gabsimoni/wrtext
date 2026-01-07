@@ -70,6 +70,10 @@ gui_edit_init(GtkApplication *app)
 
 	// Create a group, needed for reordering
 	gtk_notebook_set_group_name(GTK_NOTEBOOK(notebook), "notebookgroup");
+	// Add a dummy page to the notebook
+	GtkWidget *dummy_label = gtk_label_new("dummy label");
+	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), dummy_label, NULL);
+	gtk_widget_hide(notebook);
 
 	gtk_box_append(GTK_BOX(vbox), notebook);
 
@@ -97,9 +101,18 @@ gui_edit_close_file(editor_file_id id)
 	log_info(__FILE__, "ID %lu is at position %d", id, file_index);
 
 	// Removes the page associated to that file
+
+	int page_n = gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)); //get number of pages
+
+	if(page_n > 1){
 	gtk_notebook_remove_page(
 		(GtkNotebook *)notebook,
 		gtk_notebook_page_num((GtkNotebook *)notebook, file_list.page_widget[file_index]));
+	}else{
+		// hide notebook instead
+		gtk_widget_hide(notebook);
+
+	}
 
 	// Free file memory
 
@@ -130,7 +143,7 @@ gui_edit_close_file(editor_file_id id)
 	}
 	file_list.length--;
 
-	log_info(__FILE__, "closing file \"%lu\"", id);
+	log_info(__FILE__, "closing file with ID \"%lu\"", id);
 	log_file_list();
 
 	return 0;
@@ -176,6 +189,10 @@ gui_edit_add_file(editor_file *f)
 	// Create text area with file contents
 	GtkWidget *text_area = gtk_text_view_new();
 
+	// Make text area fill the whole space
+	gtk_widget_set_hexpand(text_area, TRUE);
+	gtk_widget_set_vexpand(text_area, TRUE);
+
 	// Loads text buffer into textarea
 	gtk_text_view_set_buffer(GTK_TEXT_VIEW(text_area), buff);
 
@@ -183,6 +200,9 @@ gui_edit_add_file(editor_file *f)
 	GtkWidget *title_box = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 2);
 	GtkWidget *title_name = gtk_label_new(f->file_name);
 	GtkWidget *close_image = gtk_image_new_from_icon_name("window-close");
+
+	// Try to make them expand
+	gtk_widget_set_hexpand(title_box, TRUE);
 
 	GtkWidget *title_close = gtk_button_new();
 	gtk_button_set_child(GTK_BUTTON(title_close), close_image);
@@ -194,6 +214,15 @@ gui_edit_add_file(editor_file *f)
 	// Create page with the widgets
 	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), text_area, title_box);
 	file_list.page_widget[file_list.length] = text_area;
+
+
+	int page_n = gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)); //get number of pages
+	if(page_n == 2 && gtk_widget_get_visible(notebook) == false){
+		// Remove extra page and show
+		gtk_notebook_remove_page(GTK_NOTEBOOK(notebook),0);
+		gtk_widget_show(notebook);
+	}
+
 
 	// Makes page reordable
 	gtk_notebook_set_tab_reorderable(GTK_NOTEBOOK(notebook), text_area, TRUE);
@@ -225,10 +254,7 @@ gui_edit_add_file(editor_file *f)
 void
 gui_edit_cleanup()
 {
-	if(file_list.files != NULL)
-		free(file_list.files);
-	if(file_list.page_widget != NULL)
-		free(file_list.page_widget);
+
 }
 
 void
@@ -237,7 +263,8 @@ gui_edit_add_random_file(GSimpleAction *action, GVariant *parameter, gpointer us
 	static int called = 0;
 	// TEST
 	editor_file *fa = malloc(sizeof(editor_file));
-	fa->file_name = malloc(30);
+	fa->file_name = calloc(1,30);
+	fa->file_path = malloc(5);
 	strcpy(fa->file_name, "test0.txt");
 	fa->file_name[4] = '0' + (char)called;
 
