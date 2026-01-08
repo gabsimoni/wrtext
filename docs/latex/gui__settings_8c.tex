@@ -1,0 +1,64 @@
+\hypertarget{gui__settings_8c}{}\doxysection{src/gui\+\_\+settings.c File Reference}
+\label{gui__settings_8c}\index{src/gui\_settings.c@{src/gui\_settings.c}}
+{\ttfamily \#include \char`\"{}gui\+\_\+settings.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}logger.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}settings.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$gtk/gtk.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gui__settings_8c_a24c607ec3c6cfe2d5b451b8cef91a857}{gui\+\_\+settings\+\_\+init}} (GSimple\+Action $\ast$action, GVariant $\ast$parameter, gpointer user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Function called whenever the settings panel has to be opened. It re-\/creates the settings window each time. The reason is that recreating the window each time appears to be the only way to re-\/center the window across all platforms. This function is connected to the menu button which triggers the opening of the settings panel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+Gtk\+Widget $\ast$ \mbox{\hyperlink{gui__settings_8c_afc5bb7c1f1bd4441b528f7e66c3817b5}{settings\+\_\+window}}
+\item 
+Gtk\+Window $\ast$ \mbox{\hyperlink{gui__settings_8c_a4583c67a7e929ce8c51bd25c8818d50c}{parent\+\_\+window}}
+\item 
+Gtk\+Widget $\ast$ \mbox{\hyperlink{gui__settings_8c_ab7eabea749807c27eaa24ef81782f344}{font\+\_\+button}}
+\item 
+int \mbox{\hyperlink{gui__settings_8c_a93a755dcd6a2c8c5d480c66196f33928}{updating\+\_\+checkboxes\+\_\+through\+\_\+code}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gui__settings_8c_a24c607ec3c6cfe2d5b451b8cef91a857}\label{gui__settings_8c_a24c607ec3c6cfe2d5b451b8cef91a857}} 
+\index{gui\_settings.c@{gui\_settings.c}!gui\_settings\_init@{gui\_settings\_init}}
+\index{gui\_settings\_init@{gui\_settings\_init}!gui\_settings.c@{gui\_settings.c}}
+\doxysubsubsection{\texorpdfstring{gui\_settings\_init()}{gui\_settings\_init()}}
+{\footnotesize\ttfamily void gui\+\_\+settings\+\_\+init (\begin{DoxyParamCaption}\item[{GSimple\+Action $\ast$}]{action,  }\item[{GVariant $\ast$}]{parameter,  }\item[{gpointer}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Function called whenever the settings panel has to be opened. It re-\/creates the settings window each time. The reason is that recreating the window each time appears to be the only way to re-\/center the window across all platforms. This function is connected to the menu button which triggers the opening of the settings panel. 
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{gui__settings_8c_ab7eabea749807c27eaa24ef81782f344}\label{gui__settings_8c_ab7eabea749807c27eaa24ef81782f344}} 
+\index{gui\_settings.c@{gui\_settings.c}!font\_button@{font\_button}}
+\index{font\_button@{font\_button}!gui\_settings.c@{gui\_settings.c}}
+\doxysubsubsection{\texorpdfstring{font\_button}{font\_button}}
+{\footnotesize\ttfamily Gtk\+Widget$\ast$ font\+\_\+button}
+
+\mbox{\Hypertarget{gui__settings_8c_a4583c67a7e929ce8c51bd25c8818d50c}\label{gui__settings_8c_a4583c67a7e929ce8c51bd25c8818d50c}} 
+\index{gui\_settings.c@{gui\_settings.c}!parent\_window@{parent\_window}}
+\index{parent\_window@{parent\_window}!gui\_settings.c@{gui\_settings.c}}
+\doxysubsubsection{\texorpdfstring{parent\_window}{parent\_window}}
+{\footnotesize\ttfamily Gtk\+Window$\ast$ parent\+\_\+window}
+
+\mbox{\Hypertarget{gui__settings_8c_afc5bb7c1f1bd4441b528f7e66c3817b5}\label{gui__settings_8c_afc5bb7c1f1bd4441b528f7e66c3817b5}} 
+\index{gui\_settings.c@{gui\_settings.c}!settings\_window@{settings\_window}}
+\index{settings\_window@{settings\_window}!gui\_settings.c@{gui\_settings.c}}
+\doxysubsubsection{\texorpdfstring{settings\_window}{settings\_window}}
+{\footnotesize\ttfamily Gtk\+Widget$\ast$ settings\+\_\+window}
+
+\mbox{\Hypertarget{gui__settings_8c_a93a755dcd6a2c8c5d480c66196f33928}\label{gui__settings_8c_a93a755dcd6a2c8c5d480c66196f33928}} 
+\index{gui\_settings.c@{gui\_settings.c}!updating\_checkboxes\_through\_code@{updating\_checkboxes\_through\_code}}
+\index{updating\_checkboxes\_through\_code@{updating\_checkboxes\_through\_code}!gui\_settings.c@{gui\_settings.c}}
+\doxysubsubsection{\texorpdfstring{updating\_checkboxes\_through\_code}{updating\_checkboxes\_through\_code}}
+{\footnotesize\ttfamily int updating\+\_\+checkboxes\+\_\+through\+\_\+code = 0}
+

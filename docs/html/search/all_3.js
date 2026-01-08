@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['gui_5fedit_2ec_0',['gui_edit.c',['../gui__edit_8c.html',1,'']]],
-  ['gui_5fedit_2eh_1',['gui_edit.h',['../gui__edit_8h.html',1,'']]],
-  ['gui_5fedit_5fadd_5ffile_2',['gui_edit_add_file',['../gui__edit_8c.html#a9526d247352bb14be4f467ee4953c131',1,'gui_edit_add_file(editor_file *f):&#160;gui_edit.c'],['../gui__edit_8h.html#a9526d247352bb14be4f467ee4953c131',1,'gui_edit_add_file(editor_file *f):&#160;gui_edit.c']]],
-  ['gui_5fedit_5fadd_5frandom_5ffile_3',['gui_edit_add_random_file',['../gui__edit_8c.html#a64b60556138ebb762eea86cab29ba848',1,'gui_edit_add_random_file():&#160;gui_edit.c'],['../gui__edit_8h.html#a64b60556138ebb762eea86cab29ba848',1,'gui_edit_add_random_file():&#160;gui_edit.c']]],
-  ['gui_5fedit_5fcleanup_4',['gui_edit_cleanup',['../gui__edit_8c.html#a6071253091095e91b5b17493c3609325',1,'gui_edit_cleanup():&#160;gui_edit.c'],['../gui__edit_8h.html#a6071253091095e91b5b17493c3609325',1,'gui_edit_cleanup():&#160;gui_edit.c']]],
-  ['gui_5fedit_5fclose_5ffile_5',['gui_edit_close_file',['../gui__edit_8c.html#a9c456445bb8064bd5c0d142c34af1a3c',1,'gui_edit_close_file(editor_file_id id):&#160;gui_edit.c'],['../gui__edit_8h.html#a9c456445bb8064bd5c0d142c34af1a3c',1,'gui_edit_close_file(editor_file_id id):&#160;gui_edit.c']]],
-  ['gui_5fedit_5finit_6',['gui_edit_init',['../gui__edit_8c.html#a4d0abf0528052793453826e63826a71c',1,'gui_edit_init(GtkApplication *app):&#160;gui_edit.c'],['../gui__edit_8h.html#a4d0abf0528052793453826e63826a71c',1,'gui_edit_init(GtkApplication *app):&#160;gui_edit.c']]],
-  ['gui_5fedit_5fmenu_2ec_7',['gui_edit_menu.c',['../gui__edit__menu_8c.html',1,'']]],
-  ['gui_5fedit_5fmenu_2eh_8',['gui_edit_menu.h',['../gui__edit__menu_8h.html',1,'']]],
-  ['gui_5fedit_5fmenu_5finit_9',['gui_edit_menu_init',['../gui__edit__menu_8c.html#a537bc95073903e3fa2f173c047ea0d25',1,'gui_edit_menu_init(GtkApplication *app):&#160;gui_edit_menu.c'],['../gui__edit__menu_8h.html#a537bc95073903e3fa2f173c047ea0d25',1,'gui_edit_menu_init(GtkApplication *app):&#160;gui_edit_menu.c']]]
+  ['file_5flist_0',['file_list',['../gui__edit_8c.html#a8fb46b499d6527b88e5e74dec08bc818',1,'gui_edit.c']]],
+  ['file_5fname_1',['file_name',['../structeditor__file.html#ad207096f1958ebffc2f0ea4c1ec96be8',1,'editor_file']]],
+  ['file_5fpath_2',['file_path',['../structeditor__file.html#ab9f618230a52057bd96b726c5f153002',1,'editor_file']]],
+  ['files_3',['files',['../structeditor__file__list.html#ad6216c53e6fb1eea136a0a1b3a31108e',1,'editor_file_list']]],
+  ['fmanager_2ec_4',['fmanager.c',['../fmanager_8c.html',1,'']]],
+  ['fmanager_2eh_5',['fmanager.h',['../fmanager_8h.html',1,'']]],
+  ['fmanager_5fload_6',['fmanager_load',['../fmanager_8c.html#a517a7cbc1e0e95e5b098169b49eea7b7',1,'fmanager_load(char *file_path):&#160;fmanager.c'],['../fmanager_8h.html#a517a7cbc1e0e95e5b098169b49eea7b7',1,'fmanager_load(char *file_path):&#160;fmanager.c']]],
+  ['fmanager_5fsave_7',['fmanager_save',['../fmanager_8c.html#a560129825fae83de98d64b457ff228ce',1,'fmanager_save(editor_file *f):&#160;fmanager.c'],['../fmanager_8h.html#a560129825fae83de98d64b457ff228ce',1,'fmanager_save(editor_file *f):&#160;fmanager.c']]],
+  ['font_8',['font',['../structsettings__state.html#a6520020e25cd495656927fe8761a4cfa',1,'settings_state']]],
+  ['font_5fbutton_9',['font_button',['../gui__settings_8c.html#ab7eabea749807c27eaa24ef81782f344',1,'gui_settings.c']]]
 ];

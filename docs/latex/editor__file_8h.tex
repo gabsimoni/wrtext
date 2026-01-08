@@ -15,7 +15,11 @@ typedef size\+\_\+t \mbox{\hyperlink{editor__file_8h_a9ed9dddb2d11bfa3cbcb15f009
 \begin{DoxyCompactItemize}
 \item 
 int \mbox{\hyperlink{editor__file_8h_adab65437d6b8a390622f183a82785f8a}{editor\+\_\+file\+\_\+delete}} (\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$f)
-\begin{DoxyCompactList}\small\item\em Frees the memory of a editor file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Frees the memory of a editor file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{editor__file_8h_a5766570aed4005d4a9ee36d67a70863c}{editor\+\_\+file\+\_\+update\+\_\+lines}} (\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Updates the lines field of the file by counting the number of new-\/lines in the content. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{editor__file_8h_ad1edafe3cc53101ae3583bae2f0bc3f5}{editor\+\_\+file\+\_\+update\+\_\+size}} (\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Updates the size field of the file by measuring the size of the content. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Typedef Documentation}
@@ -41,5 +45,35 @@ Frees the memory of a editor file.
 
 \begin{DoxyParams}{Parameters}
 {\em f} & File to be freed \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{editor__file_8h_a5766570aed4005d4a9ee36d67a70863c}\label{editor__file_8h_a5766570aed4005d4a9ee36d67a70863c}} 
+\index{editor\_file.h@{editor\_file.h}!editor\_file\_update\_lines@{editor\_file\_update\_lines}}
+\index{editor\_file\_update\_lines@{editor\_file\_update\_lines}!editor\_file.h@{editor\_file.h}}
+\doxysubsubsection{\texorpdfstring{editor\_file\_update\_lines()}{editor\_file\_update\_lines()}}
+{\footnotesize\ttfamily int editor\+\_\+file\+\_\+update\+\_\+lines (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Updates the lines field of the file by counting the number of new-\/lines in the content. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & File \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{editor__file_8h_ad1edafe3cc53101ae3583bae2f0bc3f5}\label{editor__file_8h_ad1edafe3cc53101ae3583bae2f0bc3f5}} 
+\index{editor\_file.h@{editor\_file.h}!editor\_file\_update\_size@{editor\_file\_update\_size}}
+\index{editor\_file\_update\_size@{editor\_file\_update\_size}!editor\_file.h@{editor\_file.h}}
+\doxysubsubsection{\texorpdfstring{editor\_file\_update\_size()}{editor\_file\_update\_size()}}
+{\footnotesize\ttfamily int editor\+\_\+file\+\_\+update\+\_\+size (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Updates the size field of the file by measuring the size of the content. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & File \\
 \hline
 \end{DoxyParams}

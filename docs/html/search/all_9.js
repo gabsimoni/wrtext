@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['page_5fwidget_0',['page_widget',['../structeditor__file__list.html#a8c8ab60d16b3f954b44baed4bcce7799',1,'editor_file_list']]]
+  ['on_5fclick_5ffile_5fclose_0',['on_click_file_close',['../gui__edit_8c.html#a09ce2fa8638ea98ff441fc3dffe822cc',1,'gui_edit.c']]]
 ];

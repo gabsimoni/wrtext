@@ -3,6 +3,7 @@
 {\ttfamily \#include \char`\"{}gui\+\_\+edit.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}editor\+\_\+file.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gui\+\_\+edit\+\_\+menu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gui\+\_\+settings.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}logger.\+h\char`\"{}}\newline
 {\ttfamily \#include $<$gtk/gtk.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
@@ -15,6 +16,8 @@ struct \mbox{\hyperlink{structeditor__file__list}{editor\+\_\+file\+\_\+list}}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{gui__edit_8c_ab532aaa1ddf72b96ff0e3a930d6c0148}{statusbar\+\_\+update}} (\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$f)
+\begin{DoxyCompactList}\small\item\em Updates statusbar text with the data from the file passed as a parameter. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gui__edit_8c_a5c83847e40c7733b59d9a2a9311313fe}{log\+\_\+file\+\_\+list}} ()
 \item 
 Gtk\+Widget $\ast$ \mbox{\hyperlink{gui__edit_8c_a4d0abf0528052793453826e63826a71c}{gui\+\_\+edit\+\_\+init}} (Gtk\+Application $\ast$app)
@@ -27,7 +30,7 @@ void \mbox{\hyperlink{gui__edit_8c_a09ce2fa8638ea98ff441fc3dffe822cc}{on\+\_\+cl
 \begin{DoxyCompactList}\small\item\em Adds a file to the list of opened file so that the user may edit it. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gui__edit_8c_a6071253091095e91b5b17493c3609325}{gui\+\_\+edit\+\_\+cleanup}} ()
 \item 
-void \mbox{\hyperlink{gui__edit_8c_a64b60556138ebb762eea86cab29ba848}{gui\+\_\+edit\+\_\+add\+\_\+random\+\_\+file}} ()
+void \mbox{\hyperlink{gui__edit_8c_afb73ec36119c6a8bfe616d8a70576063}{gui\+\_\+edit\+\_\+add\+\_\+random\+\_\+file}} (GSimple\+Action $\ast$action, GVariant $\ast$parameter, gpointer user\+\_\+data)
 \begin{DoxyCompactList}\small\item\em Just a debug function to add a file with random contets. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -35,7 +38,11 @@ void \mbox{\hyperlink{gui__edit_8c_a64b60556138ebb762eea86cab29ba848}{gui\+\_\+e
 \mbox{\hyperlink{structeditor__file__list}{editor\+\_\+file\+\_\+list}} \mbox{\hyperlink{gui__edit_8c_a8fb46b499d6527b88e5e74dec08bc818}{file\+\_\+list}}
 \begin{DoxyCompactList}\small\item\em Container of all the files currently opened in the editor. \end{DoxyCompactList}\item 
 Gtk\+Widget $\ast$ \mbox{\hyperlink{gui__edit_8c_a87d39878337d0b71ac7531220075a491}{notebook}}
-\begin{DoxyCompactList}\small\item\em GTK widget that holds all of the opened files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em GTK widget that holds all of the opened files. \end{DoxyCompactList}\item 
+Gtk\+Widget $\ast$ \mbox{\hyperlink{gui__edit_8c_a22c97d796c5f592c603bab82cfa9cc44}{statusbar}}
+\begin{DoxyCompactList}\small\item\em Statusbar. \end{DoxyCompactList}\item 
+Gtk\+Widget $\ast$ \mbox{\hyperlink{gui__edit_8c_a4135ce280f2ff654540c78e33ce96228}{vbox}}
+\begin{DoxyCompactList}\small\item\em Vertical box holding the notebook and statusbar. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -57,11 +64,11 @@ Adds a file to the list of opened file so that the user may edit it.
 \begin{DoxyReturn}{Returns}
 Returns the ID of the file added, -\/1 in case of error 
 \end{DoxyReturn}
-\mbox{\Hypertarget{gui__edit_8c_a64b60556138ebb762eea86cab29ba848}\label{gui__edit_8c_a64b60556138ebb762eea86cab29ba848}} 
+\mbox{\Hypertarget{gui__edit_8c_afb73ec36119c6a8bfe616d8a70576063}\label{gui__edit_8c_afb73ec36119c6a8bfe616d8a70576063}} 
 \index{gui\_edit.c@{gui\_edit.c}!gui\_edit\_add\_random\_file@{gui\_edit\_add\_random\_file}}
 \index{gui\_edit\_add\_random\_file@{gui\_edit\_add\_random\_file}!gui\_edit.c@{gui\_edit.c}}
 \doxysubsubsection{\texorpdfstring{gui\_edit\_add\_random\_file()}{gui\_edit\_add\_random\_file()}}
-{\footnotesize\ttfamily void gui\+\_\+edit\+\_\+add\+\_\+random\+\_\+file (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void gui\+\_\+edit\+\_\+add\+\_\+random\+\_\+file (\begin{DoxyParamCaption}\item[{GSimple\+Action $\ast$}]{action,  }\item[{GVariant $\ast$}]{parameter,  }\item[{gpointer}]{user\+\_\+data }\end{DoxyParamCaption})}
 
 
 
@@ -115,6 +122,21 @@ Initializes the main application window responsible for allowing the user to edi
 \doxysubsubsection{\texorpdfstring{on\_click\_file\_close()}{on\_click\_file\_close()}}
 {\footnotesize\ttfamily void on\+\_\+click\+\_\+file\+\_\+close (\begin{DoxyParamCaption}\item[{Gtk\+Button $\ast$}]{button,  }\item[{gpointer}]{data }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{gui__edit_8c_ab532aaa1ddf72b96ff0e3a930d6c0148}\label{gui__edit_8c_ab532aaa1ddf72b96ff0e3a930d6c0148}} 
+\index{gui\_edit.c@{gui\_edit.c}!statusbar\_update@{statusbar\_update}}
+\index{statusbar\_update@{statusbar\_update}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{statusbar\_update()}{statusbar\_update()}}
+{\footnotesize\ttfamily void statusbar\+\_\+update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structeditor__file}{editor\+\_\+file}} $\ast$}]{f }\end{DoxyParamCaption})}
+
+
+
+Updates statusbar text with the data from the file passed as a parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & Pointer to file \\
+\hline
+\end{DoxyParams}
 
 
 \doxysubsection{Variable Documentation}
@@ -137,4 +159,24 @@ Container of all the files currently opened in the editor.
 
 
 GTK widget that holds all of the opened files. 
+
+\mbox{\Hypertarget{gui__edit_8c_a22c97d796c5f592c603bab82cfa9cc44}\label{gui__edit_8c_a22c97d796c5f592c603bab82cfa9cc44}} 
+\index{gui\_edit.c@{gui\_edit.c}!statusbar@{statusbar}}
+\index{statusbar@{statusbar}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{statusbar}{statusbar}}
+{\footnotesize\ttfamily Gtk\+Widget$\ast$ statusbar}
+
+
+
+Statusbar. 
+
+\mbox{\Hypertarget{gui__edit_8c_a4135ce280f2ff654540c78e33ce96228}\label{gui__edit_8c_a4135ce280f2ff654540c78e33ce96228}} 
+\index{gui\_edit.c@{gui\_edit.c}!vbox@{vbox}}
+\index{vbox@{vbox}!gui\_edit.c@{gui\_edit.c}}
+\doxysubsubsection{\texorpdfstring{vbox}{vbox}}
+{\footnotesize\ttfamily Gtk\+Widget$\ast$ vbox}
+
+
+
+Vertical box holding the notebook and statusbar. 
 

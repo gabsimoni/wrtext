@@ -2,6 +2,7 @@
 #include "gui_edit.h"
 #include "editor_file.h"
 #include "gui_edit_menu.h"
+#include "gui_settings.h"
 #include "logger.h"
 #include <gtk/gtk.h>
 #include <stdlib.h>

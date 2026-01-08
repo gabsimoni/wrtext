@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['raw_5ffile_0',['raw_file',['../structraw__file.html',1,'']]]
+  ['settings_5fstate_0',['settings_state',['../structsettings__state.html',1,'']]]
 ];

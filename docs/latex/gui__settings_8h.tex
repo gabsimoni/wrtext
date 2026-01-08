@@ -1,0 +1,31 @@
+\hypertarget{gui__settings_8h}{}\doxysection{src/gui\+\_\+settings.h File Reference}
+\label{gui__settings_8h}\index{src/gui\_settings.h@{src/gui\_settings.h}}
+
+
+The files \mbox{\hyperlink{gui__settings_8h}{gui\+\_\+settings.\+h}} and \mbox{\hyperlink{gui__settings_8c}{gui\+\_\+settings.\+c}} contain the code responsible for creating the settings window and modifying the application settings based on the UI state.  
+
+
+{\ttfamily \#include $<$gtk/gtk.\+h$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gui__settings_8h_a24c607ec3c6cfe2d5b451b8cef91a857}{gui\+\_\+settings\+\_\+init}} (GSimple\+Action $\ast$action, GVariant $\ast$parameter, gpointer user\+\_\+data)
+\begin{DoxyCompactList}\small\item\em Function called whenever the settings panel has to be opened. It re-\/creates the settings window each time. The reason is that recreating the window each time appears to be the only way to re-\/center the window across all platforms. This function is connected to the menu button which triggers the opening of the settings panel. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The files \mbox{\hyperlink{gui__settings_8h}{gui\+\_\+settings.\+h}} and \mbox{\hyperlink{gui__settings_8c}{gui\+\_\+settings.\+c}} contain the code responsible for creating the settings window and modifying the application settings based on the UI state. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gui__settings_8h_a24c607ec3c6cfe2d5b451b8cef91a857}\label{gui__settings_8h_a24c607ec3c6cfe2d5b451b8cef91a857}} 
+\index{gui\_settings.h@{gui\_settings.h}!gui\_settings\_init@{gui\_settings\_init}}
+\index{gui\_settings\_init@{gui\_settings\_init}!gui\_settings.h@{gui\_settings.h}}
+\doxysubsubsection{\texorpdfstring{gui\_settings\_init()}{gui\_settings\_init()}}
+{\footnotesize\ttfamily void gui\+\_\+settings\+\_\+init (\begin{DoxyParamCaption}\item[{GSimple\+Action $\ast$}]{action,  }\item[{GVariant $\ast$}]{parameter,  }\item[{gpointer}]{user\+\_\+data }\end{DoxyParamCaption})}
+
+
+
+Function called whenever the settings panel has to be opened. It re-\/creates the settings window each time. The reason is that recreating the window each time appears to be the only way to re-\/center the window across all platforms. This function is connected to the menu button which triggers the opening of the settings panel. 
+

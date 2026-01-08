@@ -76,6 +76,7 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="gui__edit_8h_source.html">gui_edit.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="editor__file_8h_source.html">editor_file.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gui__edit__menu_8h_source.html">gui_edit_menu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gui__settings_8h_source.html">gui_settings.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="logger_8h_source.html">logger.h</a>&quot;</code><br />
 <code>#include &lt;gtk/gtk.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
@@ -89,6 +90,9 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ab532aaa1ddf72b96ff0e3a930d6c0148"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#ab532aaa1ddf72b96ff0e3a930d6c0148">statusbar_update</a> (<a class="el" href="structeditor__file.html">editor_file</a> *f)</td></tr>
+<tr class="memdesc:ab532aaa1ddf72b96ff0e3a930d6c0148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates statusbar text with the data from the file passed as a parameter.  <a href="gui__edit_8c.html#ab532aaa1ddf72b96ff0e3a930d6c0148">More...</a><br /></td></tr>
+<tr class="separator:ab532aaa1ddf72b96ff0e3a930d6c0148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c83847e40c7733b59d9a2a9311313fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#a5c83847e40c7733b59d9a2a9311313fe">log_file_list</a> ()</td></tr>
 <tr class="separator:a5c83847e40c7733b59d9a2a9311313fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d0abf0528052793453826e63826a71c"><td class="memItemLeft" align="right" valign="top">GtkWidget *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#a4d0abf0528052793453826e63826a71c">gui_edit_init</a> (GtkApplication *app)</td></tr>
@@ -104,9 +108,9 @@ Functions</h2></td></tr>
 <tr class="separator:a9526d247352bb14be4f467ee4953c131"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6071253091095e91b5b17493c3609325"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#a6071253091095e91b5b17493c3609325">gui_edit_cleanup</a> ()</td></tr>
 <tr class="separator:a6071253091095e91b5b17493c3609325"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64b60556138ebb762eea86cab29ba848"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#a64b60556138ebb762eea86cab29ba848">gui_edit_add_random_file</a> ()</td></tr>
-<tr class="memdesc:a64b60556138ebb762eea86cab29ba848"><td class="mdescLeft">&#160;</td><td class="mdescRight">Just a debug function to add a file with random contets.  <a href="gui__edit_8c.html#a64b60556138ebb762eea86cab29ba848">More...</a><br /></td></tr>
-<tr class="separator:a64b60556138ebb762eea86cab29ba848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb73ec36119c6a8bfe616d8a70576063"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#afb73ec36119c6a8bfe616d8a70576063">gui_edit_add_random_file</a> (GSimpleAction *action, GVariant *parameter, gpointer user_data)</td></tr>
+<tr class="memdesc:afb73ec36119c6a8bfe616d8a70576063"><td class="mdescLeft">&#160;</td><td class="mdescRight">Just a debug function to add a file with random contets.  <a href="gui__edit_8c.html#afb73ec36119c6a8bfe616d8a70576063">More...</a><br /></td></tr>
+<tr class="separator:afb73ec36119c6a8bfe616d8a70576063"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
@@ -116,6 +120,12 @@ Variables</h2></td></tr>
 <tr class="memitem:a87d39878337d0b71ac7531220075a491"><td class="memItemLeft" align="right" valign="top">GtkWidget *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#a87d39878337d0b71ac7531220075a491">notebook</a></td></tr>
 <tr class="memdesc:a87d39878337d0b71ac7531220075a491"><td class="mdescLeft">&#160;</td><td class="mdescRight">GTK widget that holds all of the opened files.  <a href="gui__edit_8c.html#a87d39878337d0b71ac7531220075a491">More...</a><br /></td></tr>
 <tr class="separator:a87d39878337d0b71ac7531220075a491"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22c97d796c5f592c603bab82cfa9cc44"><td class="memItemLeft" align="right" valign="top">GtkWidget *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#a22c97d796c5f592c603bab82cfa9cc44">statusbar</a></td></tr>
+<tr class="memdesc:a22c97d796c5f592c603bab82cfa9cc44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statusbar.  <a href="gui__edit_8c.html#a22c97d796c5f592c603bab82cfa9cc44">More...</a><br /></td></tr>
+<tr class="separator:a22c97d796c5f592c603bab82cfa9cc44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4135ce280f2ff654540c78e33ce96228"><td class="memItemLeft" align="right" valign="top">GtkWidget *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gui__edit_8c.html#a4135ce280f2ff654540c78e33ce96228">vbox</a></td></tr>
+<tr class="memdesc:a4135ce280f2ff654540c78e33ce96228"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vertical box holding the notebook and statusbar.  <a href="gui__edit_8c.html#a4135ce280f2ff654540c78e33ce96228">More...</a><br /></td></tr>
+<tr class="separator:a4135ce280f2ff654540c78e33ce96228"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a9526d247352bb14be4f467ee4953c131" name="a9526d247352bb14be4f467ee4953c131"></a>
@@ -145,8 +155,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a64b60556138ebb762eea86cab29ba848" name="a64b60556138ebb762eea86cab29ba848"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64b60556138ebb762eea86cab29ba848">&#9670;&nbsp;</a></span>gui_edit_add_random_file()</h2>
+<a id="afb73ec36119c6a8bfe616d8a70576063" name="afb73ec36119c6a8bfe616d8a70576063"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb73ec36119c6a8bfe616d8a70576063">&#9670;&nbsp;</a></span>gui_edit_add_random_file()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -154,8 +164,25 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">void gui_edit_add_random_file </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">GSimpleAction *&#160;</td>
+          <td class="paramname"><em>action</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">GVariant *&#160;</td>
+          <td class="paramname"><em>parameter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">gpointer&#160;</td>
+          <td class="paramname"><em>user_data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -278,6 +305,32 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ab532aaa1ddf72b96ff0e3a930d6c0148" name="ab532aaa1ddf72b96ff0e3a930d6c0148"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab532aaa1ddf72b96ff0e3a930d6c0148">&#9670;&nbsp;</a></span>statusbar_update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void statusbar_update </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structeditor__file.html">editor_file</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates statusbar text with the data from the file passed as a parameter. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Pointer to file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="a8fb46b499d6527b88e5e74dec08bc818" name="a8fb46b499d6527b88e5e74dec08bc818"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8fb46b499d6527b88e5e74dec08bc818">&#9670;&nbsp;</a></span>file_list</h2>
@@ -308,6 +361,38 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>GTK widget that holds all of the opened files. </p>
+
+</div>
+</div>
+<a id="a22c97d796c5f592c603bab82cfa9cc44" name="a22c97d796c5f592c603bab82cfa9cc44"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22c97d796c5f592c603bab82cfa9cc44">&#9670;&nbsp;</a></span>statusbar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GtkWidget* statusbar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Statusbar. </p>
+
+</div>
+</div>
+<a id="a4135ce280f2ff654540c78e33ce96228" name="a4135ce280f2ff654540c78e33ce96228"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4135ce280f2ff654540c78e33ce96228">&#9670;&nbsp;</a></span>vbox</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">GtkWidget* vbox</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Vertical box holding the notebook and statusbar. </p>
 
 </div>
 </div>

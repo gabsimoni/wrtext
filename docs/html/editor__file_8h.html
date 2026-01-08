@@ -93,6 +93,12 @@ Functions</h2></td></tr>
 <tr class="memitem:adab65437d6b8a390622f183a82785f8a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="editor__file_8h.html#adab65437d6b8a390622f183a82785f8a">editor_file_delete</a> (<a class="el" href="structeditor__file.html">editor_file</a> *f)</td></tr>
 <tr class="memdesc:adab65437d6b8a390622f183a82785f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the memory of a editor file.  <a href="editor__file_8h.html#adab65437d6b8a390622f183a82785f8a">More...</a><br /></td></tr>
 <tr class="separator:adab65437d6b8a390622f183a82785f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5766570aed4005d4a9ee36d67a70863c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="editor__file_8h.html#a5766570aed4005d4a9ee36d67a70863c">editor_file_update_lines</a> (<a class="el" href="structeditor__file.html">editor_file</a> *f)</td></tr>
+<tr class="memdesc:a5766570aed4005d4a9ee36d67a70863c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the lines field of the file by counting the number of new-lines in the content.  <a href="editor__file_8h.html#a5766570aed4005d4a9ee36d67a70863c">More...</a><br /></td></tr>
+<tr class="separator:a5766570aed4005d4a9ee36d67a70863c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1edafe3cc53101ae3583bae2f0bc3f5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="editor__file_8h.html#ad1edafe3cc53101ae3583bae2f0bc3f5">editor_file_update_size</a> (<a class="el" href="structeditor__file.html">editor_file</a> *f)</td></tr>
+<tr class="memdesc:ad1edafe3cc53101ae3583bae2f0bc3f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the size field of the file by measuring the size of the content.  <a href="editor__file_8h.html#ad1edafe3cc53101ae3583bae2f0bc3f5">More...</a><br /></td></tr>
+<tr class="separator:ad1edafe3cc53101ae3583bae2f0bc3f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a9ed9dddb2d11bfa3cbcb15f0094d1431" name="a9ed9dddb2d11bfa3cbcb15f0094d1431"></a>
@@ -130,6 +136,58 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">f</td><td>File to be freed </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5766570aed4005d4a9ee36d67a70863c" name="a5766570aed4005d4a9ee36d67a70863c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5766570aed4005d4a9ee36d67a70863c">&#9670;&nbsp;</a></span>editor_file_update_lines()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int editor_file_update_lines </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structeditor__file.html">editor_file</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the lines field of the file by counting the number of new-lines in the content. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>File </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad1edafe3cc53101ae3583bae2f0bc3f5" name="ad1edafe3cc53101ae3583bae2f0bc3f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1edafe3cc53101ae3583bae2f0bc3f5">&#9670;&nbsp;</a></span>editor_file_update_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int editor_file_update_size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structeditor__file.html">editor_file</a> *&#160;</td>
+          <td class="paramname"><em>f</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the size field of the file by measuring the size of the content. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>File </td></tr>
   </table>
   </dd>
 </dl>
