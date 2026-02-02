@@ -53,6 +53,14 @@ on_command_line(GApplication *app, GApplicationCommandLine *cmdline, gpointer us
 int
 main(int argc, char **argv)
 {
+	
+#ifdef _WIN32
+    g_setenv(
+        "GSETTINGS_SCHEMA_DIR",
+        "share\\glib-2.0\\schemas",
+        TRUE
+    );
+#endif
 
 	GtkApplication *app; // Variable that stores the pointer to the application object
 	int status;			 // Variable used to save the result of the application
