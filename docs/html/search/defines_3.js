@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['settings_5ffile_5fname_0',['SETTINGS_FILE_NAME',['../settings__save__system_8h.html#a22675546c490e1610250c14003ddd67c',1,'settings_save_system.h']]]
+  ['path_5fdivider_0',['PATH_DIVIDER',['../editor__file_8c.html#a627fe9d336e69e84a9b0985694f0bd4a',1,'editor_file.c']]]
 ];

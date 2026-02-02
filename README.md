@@ -4,7 +4,8 @@ WRText is a text editor that aims at being an open source, easy-to-use tool for 
 It's available for Windows, Mac and Linux.
 
 ## Installation
-If you are on Debian 12 you can install the `wrtext-v1.0.0.deb` file. On other systems you can compile the application yourself, further instructions are found in `INSTALL.MD`.
+If you are on Debian 12 or Windows you can download the binary from the project's repository.
+On other systems you can compile the application yourself, further instructions are found in `INSTALL.MD`.
 
 ## Documentation
 
